@@ -17,8 +17,8 @@ import android.util.Log;
 
 public class Board extends View {
 
-	static final int xcnt = 5;
-	static final int ycnt = 6;
+	int xcnt = 5;
+	int ycnt = 6;
 
 	static final int[] icons = {
 		R.drawable.animals_bumble_bee,
@@ -80,7 +80,21 @@ public class Board extends View {
 		hidden_paint.setColor(0x404040ff);
 		visible_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		visible_paint.setStyle(Paint.Style.STROKE);
+		setSize(xcnt, ycnt);
+	}
 
+	public void setSize(int ycnt_xcnt) {
+		setSize(ycnt_xcnt % 100, ycnt_xcnt / 100);
+	}
+
+	public void setSize(int xcnt, int ycnt)
+	{
+		if (xcnt < 1 || ycnt < 1) {
+			return;
+		}
+
+		this.xcnt = xcnt;
+		this.ycnt = ycnt;
 		rects = new Rect[xcnt][];
 		field_status = new int[xcnt][];
 		field_icons = new int[xcnt][];
@@ -91,6 +105,7 @@ public class Board extends View {
 		}
 
 		newGame();
+		onSizeChanged(widget_w, widget_h, widget_w, widget_h);
 	}
 
 	public void newGame() {
@@ -122,11 +137,14 @@ public class Board extends View {
 	int w;
 	int h;
 	Rect rect;
+	int widget_w, widget_h; // w and h from last call of onSizeChanged
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh)
 	{
 		super.onSizeChanged(w, h, oldw, oldh);
+		widget_w = w;
+		widget_h = h;
 		int w1 = w - getPaddingLeft() - getPaddingRight();
 		int h1 = h - getPaddingTop() - getPaddingBottom();
 		int size = Math.min((w1 / xcnt), (h1 / ycnt));

@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_size">Size of puzzle</string>
+
+    <string-array name="pref_size_list_titles">
+        <item>4 x 3</item>
+        <item>5 x 4</item>
+        <item>6 x 5</item>
+        <item>7 x 6</item>
+    </string-array>
+    <string-array name="pref_size_list_values">
+        <item>403</item>
+        <item>504</item>
+        <item>605</item>
+        <item>706</item>
+    </string-array>
+
+</resources>
