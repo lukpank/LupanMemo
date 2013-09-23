@@ -16,6 +16,7 @@ import android.util.Log;
 public class MainActivity extends Activity implements OnSharedPreferenceChangeListener {
 
 	Board board;
+	SharedPreferences sharedPref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +24,27 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		setContentView(R.layout.activity_main);
 		board = (Board) findViewById(R.id.board);
 
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		sharedPref.registerOnSharedPreferenceChangeListener(this);
 
-		board.setSize(Integer.parseInt(sharedPref.getString("size_list", "605")));
 
-		Log.i("lupan", "onCreate");
+		if (sharedPref.contains("board_state")) {
+			board.deserialize(
+				sharedPref.getString("board_state", ""));
+		} else {
+			board.setSize(Integer.parseInt(
+				sharedPref.getString("size_list", "605")));
+		}
 	}
 
+	@Override
+	protected void onPause ()
+	{
+		super.onPause();
+		SharedPreferences.Editor prefEditor = sharedPref.edit();
+		prefEditor.putString("board_state", board.serialize());
+		prefEditor.commit();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -261,4 +261,93 @@ public class Board extends View {
 		}
 		return true;
 	}
+
+	/**
+	 * Serialize Board state into a string
+	 */
+	public String serialize()
+	{
+		StringBuffer buf = new StringBuffer();
+
+		buf.append(String.format("%d:", xcnt));
+		buf.append(String.format("%d:", ycnt));
+		buf.append(String.format("%d:", uncovered_cnt));
+		buf.append(String.format("%d:",
+					 (uncovered_cnt > 0) ? xs[0] : 0));
+		buf.append(String.format("%d:",
+					 (uncovered_cnt > 0) ? ys[0] : 0));
+		buf.append(String.format("%d:",
+					 (uncovered_cnt > 1) ? xs[1] : 0));
+		buf.append(String.format("%d:",
+					 (uncovered_cnt > 1) ? ys[1] : 0));
+
+		for (int x = 0; x < xcnt; x++) {
+			for (int y = 0; y < ycnt; y++) {
+				buf.append(String.format("%d:",
+							 field_icons[x][y]));
+				buf.append(String.format("%d:",
+							 field_status[x][y]));
+			}
+		}
+		return buf.toString();
+	}
+
+	/**
+	 * Deserialize Board state from a string
+	 */
+	public boolean deserialize(String str)
+	{
+		String[] tokens = str.split(":");
+		int[] values = new int[tokens.length];
+		for (int i = 0; i < tokens.length; i++) {
+			try {
+				values[i] = Integer.parseInt(tokens[i]);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		}
+		if (values.length < 7) {
+			return false;
+		}
+		int xcnt = values[0];
+		int ycnt = values[1];
+
+		if (xcnt < 1 || ycnt < 1 || xcnt * ycnt / 2 > icons.length ||
+		    values.length < 2 + 2 * xcnt * ycnt) {
+			// empty or not enough icons or not enough values
+			return false;
+		}
+		setSize(xcnt, ycnt);
+		uncovered_cnt = values[2];
+		xs[0] = values[3];
+		ys[0] = values[4];
+		xs[1] = values[5];
+		ys[1] = values[6];
+		if (uncovered_cnt < 0 || uncovered_cnt > 2 ||
+		    xs[0] < 0 || xs[0] >= xcnt ||
+		    ys[0] < 0 || ys[0] >= ycnt ||
+		    xs[1] < 0 || xs[1] >= xcnt ||
+		    ys[1] < 0 || ys[1] >= ycnt) {
+			setSize(xcnt, ycnt);
+			return false;
+		}
+
+		active_fields = xcnt * ycnt;
+		int idx = 7;
+		for (int x = 0; x < xcnt; x++) {
+			for (int y = 0; y < ycnt; y++) {
+				field_icons[x][y] = values[idx++];
+				field_status[x][y] = values[idx++];
+				if (field_icons[x][y] < 0 || field_icons[x][y] >= icons.length ||
+				    field_status[x][y] < 0 || field_status[x][y] > 2) {
+					setSize(xcnt, ycnt);
+					return false;
+				}
+				if (field_status[x][y] == EMPTY_FIELD) {
+					active_fields--;
+				}
+			}
+		}
+		return true;
+	}
 }
