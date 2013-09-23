@@ -46,7 +46,10 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 			Intent intent = new Intent(this,
 						   SettingsActivity.class);
 			startActivity(intent);
-			Log.i("lupan", "settings");
+			return true;
+		case R.id.action_new_game:
+			board.newGame();
+			board.invalidate();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
