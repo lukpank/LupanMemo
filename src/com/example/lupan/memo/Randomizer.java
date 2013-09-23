@@ -18,15 +18,6 @@ public class Randomizer {
 		rnd = new Random();
 	}
 
-	public Randomizer(int[] arr) {
-		array = new int[arr.length];
-		for (int i = 0; i < arr.length; i++) {
-			array[i] = arr[i];
-		}
-		this.cnt = arr.length;
-		rnd = new Random();
-	}
-
 	public int getRandomValue() {
 		assert cnt > 0;
 		int pos = rnd.nextInt(cnt);

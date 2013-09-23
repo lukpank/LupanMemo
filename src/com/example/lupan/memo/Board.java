@@ -117,7 +117,7 @@ public class Board extends View {
 		active_fields = xcnt * ycnt;
 		uncovered_cnt = 0;
 
-		Randomizer r_icons = new Randomizer(icons);
+		Randomizer r_icons = new Randomizer(icons.length);
 		Randomizer r_fields = new Randomizer(xcnt * ycnt);
 		for (int i = 0; i < xcnt * ycnt / 2; i++) {
 			int icon = r_icons.getRandomValue();
@@ -176,7 +176,7 @@ public class Board extends View {
 		if (field_status[x][y] == UNCOVERED_FIELD) {
 			Resources res = getContext().getResources();
 			Bitmap bitmap = BitmapFactory.decodeResource(
-				              res, field_icons[x][y]);
+				              res, icons[field_icons[x][y]]);
 			canvas.drawBitmap(bitmap, null, rects[x][y],
 					  visible_paint);
 		}
