@@ -76,7 +76,7 @@ public class Board extends View {
 	int[] ys = new int[2];
 
 	private void init() {
-		hidden_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		hidden_paint = new Paint();
 		hidden_paint.setColor(0x404040ff);
 		visible_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		visible_paint.setStyle(Paint.Style.STROKE);
@@ -170,9 +170,10 @@ public class Board extends View {
 		if (field_status[x][y] == EMPTY_FIELD) {
 			return;
 		}
-		canvas.drawRect(rects[x][y],
-				(field_status[x][y] == HIDDEN_FIELD) ?
-				hidden_paint : visible_paint);
+		if (field_status[x][y] == HIDDEN_FIELD) {
+			canvas.drawRect(rects[x][y], hidden_paint);
+		}
+		canvas.drawRect(rects[x][y], visible_paint);
 		if (field_status[x][y] == UNCOVERED_FIELD) {
 			Resources res = getContext().getResources();
 			Bitmap bitmap = BitmapFactory.decodeResource(
