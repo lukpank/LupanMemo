@@ -248,9 +248,6 @@ public class Board extends View {
 				    field_icons[xs[1]][ys[1]]) {
 					remove_uncovered_fields();
 				}
-				if (active_fields == 0) {
-					newGame();
-				}
 				break;
 			case 2:
 				hide_uncovered_fields();
