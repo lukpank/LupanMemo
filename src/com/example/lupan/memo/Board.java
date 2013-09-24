@@ -58,7 +58,7 @@ public class Board extends View {
 		init();
 	}
 
-	Paint hidden_paint, visible_paint;
+	Paint hidden_paint, visible_paint, textPaint;
 	Rect[][] rects;
 	int[][] field_icons;
 
@@ -70,6 +70,7 @@ public class Board extends View {
 
 	int active_fields; // all HIDDEN_FIELD + all UNCOVERED_FIELDS
 	int uncovered_cnt;  // how many fields are uncovered
+	int moves_cnt;
 
 	// coordinates of uncovered fields
 	int[] xs = new int[2];
@@ -80,6 +81,9 @@ public class Board extends View {
 		hidden_paint.setColor(0x404040ff);
 		visible_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		visible_paint.setStyle(Paint.Style.STROKE);
+		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		textPaint.setTextAlign(Paint.Align.CENTER);
+		textPaint.setTextSize(18);
 		setSize(xcnt, ycnt);
 	}
 
@@ -116,6 +120,7 @@ public class Board extends View {
 		}
 		active_fields = xcnt * ycnt;
 		uncovered_cnt = 0;
+		moves_cnt = 0;
 
 		Randomizer r_icons = new Randomizer(icons.length);
 		Randomizer r_fields = new Randomizer(xcnt * ycnt);
@@ -193,6 +198,11 @@ public class Board extends View {
 				drawRect(canvas, x, y);
 			}
 		}
+		if (active_fields == 0) {
+			canvas.drawText(String.format(
+				"You won using %d moves!", moves_cnt),
+					x + w/2, y + h/2, textPaint);
+		}
 	}
 
 	private void uncover(int x, int y) {
@@ -240,6 +250,7 @@ public class Board extends View {
 
 			switch (uncovered_cnt) {
 			case 0:
+				moves_cnt += 1;
 				uncover(x, y);
 				break;
 			case 1:
@@ -250,6 +261,7 @@ public class Board extends View {
 				}
 				break;
 			case 2:
+				moves_cnt += 1;
 				hide_uncovered_fields();
 				uncover(x, y);
 				break;
@@ -266,17 +278,10 @@ public class Board extends View {
 	{
 		StringBuffer buf = new StringBuffer();
 
+		buf.append("0:"); // format's version number
 		buf.append(String.format("%d:", xcnt));
 		buf.append(String.format("%d:", ycnt));
-		buf.append(String.format("%d:", uncovered_cnt));
-		buf.append(String.format("%d:",
-					 (uncovered_cnt > 0) ? xs[0] : 0));
-		buf.append(String.format("%d:",
-					 (uncovered_cnt > 0) ? ys[0] : 0));
-		buf.append(String.format("%d:",
-					 (uncovered_cnt > 1) ? xs[1] : 0));
-		buf.append(String.format("%d:",
-					 (uncovered_cnt > 1) ? ys[1] : 0));
+		buf.append(String.format("%d:", moves_cnt));
 
 		for (int x = 0; x < xcnt; x++) {
 			for (int y = 0; y < ycnt; y++) {
@@ -303,11 +308,15 @@ public class Board extends View {
 				return false;
 			}
 		}
-		if (values.length < 7) {
+		if (values.length < 4) {
 			return false;
 		}
-		int xcnt = values[0];
-		int ycnt = values[1];
+		int version = values[0];
+		if (version != 0) {
+			return false;
+		}
+		int xcnt = values[1];
+		int ycnt = values[2];
 
 		if (xcnt < 1 || ycnt < 1 || xcnt * ycnt / 2 > icons.length ||
 		    values.length < 2 + 2 * xcnt * ycnt) {
@@ -315,22 +324,11 @@ public class Board extends View {
 			return false;
 		}
 		setSize(xcnt, ycnt);
-		uncovered_cnt = values[2];
-		xs[0] = values[3];
-		ys[0] = values[4];
-		xs[1] = values[5];
-		ys[1] = values[6];
-		if (uncovered_cnt < 0 || uncovered_cnt > 2 ||
-		    xs[0] < 0 || xs[0] >= xcnt ||
-		    ys[0] < 0 || ys[0] >= ycnt ||
-		    xs[1] < 0 || xs[1] >= xcnt ||
-		    ys[1] < 0 || ys[1] >= ycnt) {
-			setSize(xcnt, ycnt);
-			return false;
-		}
+		moves_cnt = values[3];
 
 		active_fields = xcnt * ycnt;
-		int idx = 7;
+		uncovered_cnt = 0;
+		int idx = 4;
 		for (int x = 0; x < xcnt; x++) {
 			for (int y = 0; y < ycnt; y++) {
 				field_icons[x][y] = values[idx++];
@@ -342,6 +340,15 @@ public class Board extends View {
 				}
 				if (field_status[x][y] == EMPTY_FIELD) {
 					active_fields--;
+				}
+				if (field_status[x][y] == UNCOVERED_FIELD) {
+					if (uncovered_cnt == 2) {
+						setSize(xcnt, ycnt);
+						return false;
+					}
+					xs[uncovered_cnt] = x;
+					ys[uncovered_cnt] = y;
+					uncovered_cnt++;
 				}
 			}
 		}
