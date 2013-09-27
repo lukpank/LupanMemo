@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lupan Memo</string>
+    <string name="action_new_game">Nowa gra</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="action_about">O programie</string>
+    <string name="ok">OK</string>
+    <string name="you_won">Ukończyłeś grę w %d ruchach.</string>
+    <string name="message_about">
+      <![CDATA[
+
+<h1>Lupan Memo</h1>
+
+<p>
+Wersja: <b>0.1</b>
+</p>
+
+<p>
+Autor: <b>Łukasz Pankowski</b> &lt;lukpank@o2.pl&gt;
+</p>
+
+<p>
+Wszelkie prawa zastrzeżone. Żadnej gwarancji.
+</p>
+
+<p>
+Wszystkie obrazki na planszy są w Domenie Publicznej (ang. Public Domain)
+Pochodzą z http://openiconlibrary.sourceforge.net/ (ze źródeł
+wpclipart i tango) oraz z http://www.wpclipart.com/
+</p>
+
+      ]]>
+    </string>
+    
+</resources>

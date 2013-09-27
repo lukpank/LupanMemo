@@ -200,8 +200,8 @@ public class Board extends View {
 		}
 		if (active_fields == 0) {
 			canvas.drawText(String.format(
-				"You won using %d moves!", moves_cnt),
-					x + w/2, y + h/2, textPaint);
+				getContext().getString(R.string.you_won),
+				moves_cnt), x + w/2, y + h/2, textPaint);
 		}
 	}
 
