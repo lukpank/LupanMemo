@@ -17,8 +17,8 @@ import android.util.Log;
 
 public class Board extends View {
 
-	int xcnt = 5;
-	int ycnt = 6;
+	int xcnt = 0;
+	int ycnt = 0;
 
 	static final int[] icons = {
 		R.drawable.animals_bumble_bee,
@@ -58,6 +58,10 @@ public class Board extends View {
 		init();
 	}
 
+	public int getMovesCnt() {
+		return moves_cnt;
+	}
+
 	Paint hidden_paint, visible_paint, textPaint;
 	Rect[][] rects;
 	int[][] field_icons;
@@ -84,16 +88,12 @@ public class Board extends View {
 		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		textPaint.setTextAlign(Paint.Align.CENTER);
 		textPaint.setTextSize(18);
-		setSize(xcnt, ycnt);
 	}
 
-	public void setSize(int ycnt_xcnt) {
-		setSize(ycnt_xcnt % 100, ycnt_xcnt / 100);
-	}
-
-	public void setSize(int xcnt, int ycnt)
+	private void setSize(int xcnt, int ycnt)
 	{
-		if (xcnt < 1 || ycnt < 1) {
+		if (xcnt < 1 || ycnt < 1 ||
+		    xcnt == this.xcnt && ycnt == this.ycnt) {
 			return;
 		}
 
@@ -108,11 +108,15 @@ public class Board extends View {
 			field_icons[i] = new int[ycnt];
 		}
 
-		newGame();
 		onSizeChanged(widget_w, widget_h, widget_w, widget_h);
 	}
 
-	public void newGame() {
+	public void newGame(int ycnt_xcnt) {
+		newGame(ycnt_xcnt % 100, ycnt_xcnt / 100);
+	}
+
+	public void newGame(int xcnt, int ycnt) {
+		setSize(xcnt, ycnt);
 		for (int i = 0; i < xcnt; i++) {
 			for (int j = 0; j < ycnt; j++) {
 				field_status[i][j] = HIDDEN_FIELD;
@@ -335,7 +339,7 @@ public class Board extends View {
 				field_status[x][y] = values[idx++];
 				if (field_icons[x][y] < 0 || field_icons[x][y] >= icons.length ||
 				    field_status[x][y] < 0 || field_status[x][y] > 2) {
-					setSize(xcnt, ycnt);
+					newGame(xcnt, ycnt);
 					return false;
 				}
 				if (field_status[x][y] == EMPTY_FIELD) {
@@ -343,7 +347,7 @@ public class Board extends View {
 				}
 				if (field_status[x][y] == UNCOVERED_FIELD) {
 					if (uncovered_cnt == 2) {
-						setSize(xcnt, ycnt);
+						newGame(xcnt, ycnt);
 						return false;
 					}
 					xs[uncovered_cnt] = x;

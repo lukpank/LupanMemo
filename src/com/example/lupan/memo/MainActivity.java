@@ -32,14 +32,23 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		sharedPref.registerOnSharedPreferenceChangeListener(this);
 
-
-		if (sharedPref.contains("board_state")) {
-			board.deserialize(
-				sharedPref.getString("board_state", ""));
-		} else {
-			board.setSize(Integer.parseInt(
-				sharedPref.getString("size_list", "605")));
+		if (! sharedPref.contains("board_state") ||
+		    ! board.deserialize(
+				sharedPref.getString("board_state", ""))) {
+			newGame();
 		}
+	}
+
+	public void newGame()
+	{
+		int size;
+		try {
+			size = Integer.parseInt(
+				sharedPref.getString("size_list", "605"));
+		} catch (NumberFormatException e) {
+			size = 605;
+		}
+		board.newGame(size);
 	}
 
 	@Override
@@ -80,7 +89,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 			startActivity(intent);
 			return true;
 		case R.id.action_new_game:
-			board.newGame();
+			newGame();
 			board.invalidate();
 			return true;
 		case R.id.action_about:
@@ -93,8 +102,8 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		if (key.equals("size_list")) {
-			board.setSize(Integer.parseInt(sharedPreferences.getString("size_list", "605")));
+		if (key.equals("size_list") && board.getMovesCnt() == 0) {
+			newGame();
 			board.invalidate();
 		}
 	}
