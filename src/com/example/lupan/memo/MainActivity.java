@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 
 
 public class MainActivity extends Activity implements OnSharedPreferenceChangeListener {
@@ -73,6 +74,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		View layout = inflater.inflate(R.layout.dialog_about, null);
 		TextView text = (TextView) layout.findViewById(R.id.about_text);
 		text.setText(Html.fromHtml(getString(R.string.message_about)));
+		text.setMovementMethod(LinkMovementMethod.getInstance());
 		builder.setView(layout);
 
 		builder.setPositiveButton(R.string.ok, null);

@@ -17,7 +17,8 @@ Version: <b>0.1</b>
 </p>
 
 <p>
-Author: <b>Łukasz Pankowski</b> &lt;lukpank@o2.pl&gt;
+Author: <b>Łukasz Pankowski</b>
+&lt;<a href="mailto:lukpank@o2.pl">lukpank@o2.pl</a>&gt;
 </p>
 
 <p>
@@ -25,10 +26,14 @@ All rights reserved. No guaranty.
 </p>
 
 <p>
-All the images used on the board are in the Public Domain.  They
-come from http://openiconlibrary.sourceforge.net/ (from
-wpclipart and tango sources) and also from
-http://www.wpclipart.com/
+All the images used on the board and the application icon are in the
+Public Domain.  They come from <a
+href="http://openiconlibrary.sourceforge.net/">http://openiconlibrary.sourceforge.net/</a>
+(from WPClipart and tango Tango Desktop Project) and also direcly from
+WPClipart (<a
+href="http://www.wpclipart.com/">http://www.wpclipart.com/</a>) and
+Tango Desktop Project (<a
+href="http://tango.freedesktop.org/">http://tango.freedesktop.org/</a>).
 </p>
 
       ]]>
