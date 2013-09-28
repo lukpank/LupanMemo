@@ -17,9 +17,6 @@ import android.util.Log;
 
 public class Board extends View {
 
-	int xcnt = 0;
-	int ycnt = 0;
-
 	static final int[] icons = {
 		R.drawable.animals_bumble_bee,
 		R.drawable.animals_butterfly,
@@ -62,7 +59,10 @@ public class Board extends View {
 		return moves_cnt;
 	}
 
-	Paint hidden_paint, visible_paint, textPaint;
+	int xcnt = 0; /** number of rows on the board */
+	int ycnt = 0; /** number of columns on the board */
+
+	Paint hidden_paint, visible_paint, text_paint;
 	Rect[][] rects;
 	int[][] field_icons;
 
@@ -85,9 +85,9 @@ public class Board extends View {
 		hidden_paint.setColor(0x404040ff);
 		visible_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		visible_paint.setStyle(Paint.Style.STROKE);
-		textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		textPaint.setTextAlign(Paint.Align.CENTER);
-		textPaint.setTextSize(18);
+		text_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		text_paint.setTextAlign(Paint.Align.CENTER);
+		text_paint.setTextSize(18);
 	}
 
 	private void setSize(int xcnt, int ycnt)
@@ -203,7 +203,7 @@ public class Board extends View {
 			canvas.drawText(String.format(
 				getContext().getString(R.string.you_won),
 				moves_cnt), board_x + board_w/2,
-					board_y + board_h/2, textPaint);
+					board_y + board_h/2, text_paint);
 		}
 	}
 
