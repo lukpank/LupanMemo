@@ -7,6 +7,7 @@
     <string name="action_about">About</string>
     <string name="ok">OK</string>
     <string name="you_won">You finished the game using %d moves.</string>
+    <string name="unsupported_link_type">The link type you have just clicked is not supported</string>
     <string name="message_about">
       <![CDATA[
 

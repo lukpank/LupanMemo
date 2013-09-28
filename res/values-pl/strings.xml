@@ -7,6 +7,7 @@
     <string name="action_about">O programie</string>
     <string name="ok">OK</string>
     <string name="you_won">Ukończyłeś grę w %d ruchach.</string>
+    <string name="unsupported_link_type">Typ linku który właśnie kliknąłeś nie jest obsługiwany</string>
     <string name="message_about">
       <![CDATA[
 

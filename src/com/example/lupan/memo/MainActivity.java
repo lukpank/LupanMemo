@@ -67,6 +67,30 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		return true;
 	}
 
+	private class MyLinkMovementMethod extends LinkMovementMethod {
+		// a workaround to avoid crashing on my Nook device
+
+		Activity activity;
+
+		public MyLinkMovementMethod(Activity activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public boolean onTouchEvent(TextView widget, android.text.Spannable buffer, android.view.MotionEvent event)
+		{
+			try {
+				return super.onTouchEvent(widget, buffer, event);
+			} catch (android.content.ActivityNotFoundException e) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+				builder.setMessage(R.string.unsupported_link_type);
+				builder.setPositiveButton(R.string.ok, null);
+				builder.show();
+				return false;
+			}
+		}
+	}
+
 	public void about() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -74,7 +98,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		View layout = inflater.inflate(R.layout.dialog_about, null);
 		TextView text = (TextView) layout.findViewById(R.id.about_text);
 		text.setText(Html.fromHtml(getString(R.string.message_about)));
-		text.setMovementMethod(LinkMovementMethod.getInstance());
+		text.setMovementMethod(new MyLinkMovementMethod(this));
 		builder.setView(layout);
 
 		builder.setPositiveButton(R.string.ok, null);
