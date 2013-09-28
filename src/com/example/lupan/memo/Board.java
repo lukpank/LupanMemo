@@ -141,11 +141,10 @@ public class Board extends View {
 		}
 	}
 
-	int x;
-	int y;
-	int w;
-	int h;
-	Rect rect;
+	int board_x;
+	int board_y;
+	int board_w; /** width of the board minus padding */
+	int board_h; /** height of the board minus padding */
 	int widget_w, widget_h; // w and h from last call of onSizeChanged
 
 	@Override
@@ -157,19 +156,17 @@ public class Board extends View {
 		int w1 = w - getPaddingLeft() - getPaddingRight();
 		int h1 = h - getPaddingTop() - getPaddingBottom();
 		int size = Math.min((w1 / xcnt), (h1 / ycnt));
-		this.w = xcnt * size;
-		this.h = ycnt * size;
-		this.x = getPaddingLeft() + (w1 - this.w) / 2;
-		this.y = getPaddingTop() + (h1 - this.h) / 2;
-		rect = new Rect(this.x, this.y,
-				this.x + this.w, this.y + this.h);
+		board_w = xcnt * size;
+		board_h = ycnt * size;
+		board_x = getPaddingLeft() + (w1 - board_w) / 2;
+		board_y = getPaddingTop() + (h1 - board_h) / 2;
 		for (int x = 0; x < xcnt; x++) {
 			for (int y = 0; y < ycnt; y++) {
 				rects[x][y] = new Rect(
-				       this.x + x * size + 2,
-				       this.y + y * size + 2,
-				       this.x + (x + 1) * size - 2,
-				       this.y + (y + 1) * size - 2);
+				       board_x + x * size + 2,
+				       board_y + y * size + 2,
+				       board_x + (x + 1) * size - 2,
+				       board_y + (y + 1) * size - 2);
 			}
 		}
 	}
@@ -205,7 +202,8 @@ public class Board extends View {
 		if (active_fields == 0) {
 			canvas.drawText(String.format(
 				getContext().getString(R.string.you_won),
-				moves_cnt), x + w/2, y + h/2, textPaint);
+				moves_cnt), board_x + board_w/2,
+					board_y + board_h/2, textPaint);
 		}
 	}
 
