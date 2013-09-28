@@ -150,6 +150,9 @@ public class Board extends View {
 	protected void onSizeChanged(int w, int h, int oldw, int oldh)
 	{
 		super.onSizeChanged(w, h, oldw, oldh);
+		if (xcnt == 0 || ycnt == 0) {
+			return;
+		}
 		widget_w = w;
 		widget_h = h;
 		int w1 = w - getPaddingLeft() - getPaddingRight();
