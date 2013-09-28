@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.text.Html;
-import android.util.Log;
 
 
 public class MainActivity extends Activity implements OnSharedPreferenceChangeListener {

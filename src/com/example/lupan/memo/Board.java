@@ -12,7 +12,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect; // (left, top, right, bottom)
-import android.util.Log;
 
 
 public class Board extends View {
