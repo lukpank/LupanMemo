@@ -189,6 +189,8 @@ public class Board extends View {
 		}
 	}
 
+	Rect bounds = new Rect();
+
 	@Override
 	protected void onDraw(Canvas canvas)
 	{
@@ -200,9 +202,16 @@ public class Board extends View {
 			}
 		}
 		if (active_fields == 0) {
-			canvas.drawText(String.format(
+			String msg = String.format(
 				getContext().getString(R.string.you_won),
-				moves_cnt), board_x + board_w/2,
+				moves_cnt);
+			text_paint.getTextBounds(msg, 0, msg.length(), bounds);
+			while (bounds.width() >= board_w) {
+				text_paint.setTextSize(text_paint.getTextSize() - 1);
+				text_paint.getTextBounds(msg, 0, msg.length(),
+							 bounds);
+			}
+			canvas.drawText(msg, board_x + board_w/2,
 					board_y + board_h/2, text_paint);
 		}
 	}
