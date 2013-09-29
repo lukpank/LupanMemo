@@ -26,6 +26,10 @@
             android:name="com.example.lupan.memo.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.example.lupan.memo.BestResults"
+            android:label="@string/title_activity_best_results" >
+        </activity>
     </application>
 
 </manifest>
