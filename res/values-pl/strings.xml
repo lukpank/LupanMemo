@@ -3,12 +3,17 @@
 
     <string name="app_name">Lupan Memo</string>
     <string name="action_new_game">Nowa gra</string>
+    <string name="action_best_results">Najlepsze wyniki</string>
     <string name="action_settings">Ustawienia</string>
     <string name="action_about">O programie</string>
     <string name="ok">OK</string>
     <string name="you_won">Ukończyłeś grę w %d ruchach.</string>
     <string name="unsupported_link_type">Typ linku który właśnie kliknąłeś nie jest obsługiwany</string>
     <string name="title_activity_best_results">Najlepsze wyniki</string>
+    <string name="your_result">Twój wynik</string>
+    <string name="results_score">Punkty</string>
+    <string name="results_date">Data</string>
+    <string name="results_name">Imię</string>
     <string name="message_about">
 <![CDATA[
 

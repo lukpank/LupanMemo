@@ -2,9 +2,15 @@
 
     <item
         android:id="@+id/action_new_game"
-        android:orderInCategory="90"
+        android:orderInCategory="80"
         android:showAsAction="never"
         android:title="@string/action_new_game"/>
+
+    <item
+        android:id="@+id/action_best_results"
+        android:orderInCategory="90"
+        android:showAsAction="never"
+        android:title="@string/action_best_results"/>
 
     <item
         android:id="@+id/action_settings"

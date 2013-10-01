@@ -27,7 +27,7 @@
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.example.lupan.memo.BestResults"
+            android:name="com.example.lupan.memo.BestResultsActivity"
             android:label="@string/title_activity_best_results" >
         </activity>
     </application>

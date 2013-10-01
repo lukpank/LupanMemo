@@ -49,6 +49,8 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 			size = 605;
 		}
 		board.newGame(size);
+		board.invalidate();
+
 	}
 
 	@Override
@@ -91,6 +93,17 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		}
 	}
 
+	public void bestResults(int score) {
+
+		Intent intent = new Intent(this,
+					   BestResultsActivity.class);
+		Bundle b = new Bundle();
+		b.putInt("board_size", board.getBoardSize());
+		b.putInt("score", 0);
+		intent.putExtras(b);
+		startActivity(intent);
+	}
+
 	public void about() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -108,14 +121,16 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.action_new_game:
+			newGame();
+			return true;
 		case R.id.action_settings:
 			Intent intent = new Intent(this,
 						   SettingsActivity.class);
 			startActivity(intent);
 			return true;
-		case R.id.action_new_game:
-			newGame();
-			board.invalidate();
+		case R.id.action_best_results:
+			bestResults(0);
 			return true;
 		case R.id.action_about:
 			about();
@@ -129,7 +144,6 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if (key.equals("size_list") && board.getMovesCnt() == 0) {
 			newGame();
-			board.invalidate();
 		}
 	}
 

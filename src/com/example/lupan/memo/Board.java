@@ -58,6 +58,10 @@ public class Board extends View {
 		return moves_cnt;
 	}
 
+	public int getBoardSize() {
+		return ycnt * 100 + xcnt;
+	}
+
 	int xcnt = 0; /** number of rows on the board */
 	int ycnt = 0; /** number of columns on the board */
 
