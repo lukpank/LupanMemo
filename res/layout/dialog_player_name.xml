@@ -8,14 +8,16 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ask_for_player_name" />
+        android:text="@string/ask_for_player_name"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/playerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName" >
+        android:inputType="textPersonName"
+        android:padding="10dp" >
 
         <requestFocus />
     </EditText>
