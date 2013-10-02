@@ -21,7 +21,7 @@
 <h1>Lupan Memo</h1>
 
 <p>
-Wersja: <b>0.1</b>
+Wersja: <b>0.2</b>
 </p>
 
 <p>
@@ -32,6 +32,14 @@ Autor: <b>Łukasz Pankowski</b>
 <p>
 Wszelkie prawa zastrzeżone. Żadnej gwarancji.
 </p>
+
+<p>
+Celem gry jest odsłonięcie wszystkich obrazków w jak najmniejszej
+liczbie ruchów. Obrazki odsłania się parami (przez kliknięcie
+wybranych obrazków) i jeśli są one identyczne to zostają usunięte z
+planszy, jeśli zaś są różne to są ponownie zakrywane.
+</p>
+
 
 <p>
 Wszystkie obrazki na planszy oraz ikona programu są w Domenie

@@ -21,7 +21,7 @@
 <h1>Lupan Memo</h1>
 
 <p>
-Version: <b>0.1</b>
+Version: <b>0.2</b>
 </p>
 
 <p>
@@ -30,7 +30,14 @@ Author: <b>Łukasz Pankowski</b>
 </p>
 
 <p>
-All rights reserved. No guaranty.
+All rights reserved. No warranty.
+</p>
+
+<p>
+The aim of the game is to uncover all of the images in the minimum
+number of moves. Images are uncovered pairwise (by clicking selected
+images) and if they are identical then they are removed from the board
+and if they are different then they are covered again.
 </p>
 
 <p>
