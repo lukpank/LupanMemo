@@ -31,11 +31,13 @@ public class BestResultsActivity extends Activity {
 		}
 	}
 
+	static final int BEST_RESULTS_CNT = 10;
+
 	int board_size;
 	int your_score;
 	int your_pos = -1;
 	SharedPreferences sharedPref;
-	Result[] results = new Result[11];
+	Result[] results = new Result[BEST_RESULTS_CNT + 1];
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class BestResultsActivity extends Activity {
 						System.currentTimeMillis(),
 						getString(R.string.your_result));
 		for (String line : lines) {
-			if (i > 9) {
+			if (i >= BEST_RESULTS_CNT) {
 				break;
 			}
 			String[] fields = line.split(":", 3);
@@ -78,7 +80,7 @@ public class BestResultsActivity extends Activity {
 				your_pos = i;
 				results[i++] = your_result;
 			}
-			if (i > 9) {
+			if (i >= BEST_RESULTS_CNT) {
 				break;
 			}
 			results[i++] = new Result(score, date, name);
@@ -99,7 +101,7 @@ public class BestResultsActivity extends Activity {
 		Resources res = getResources();
 		String pkg = getApplicationContext().getPackageName();
  
-		for (int i = 0; i <= 11; i++) {
+		for (int i = 0; i < BEST_RESULTS_CNT + 1; i++) {
 			if (results[i] == null) {
 				break;
 			}
