@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 					   BestResultsActivity.class);
 		Bundle b = new Bundle();
 		b.putInt("board_size", board.getBoardSize());
-		b.putInt("score", 0);
+		b.putInt("score", score);
 		intent.putExtras(b);
 		startActivity(intent);
 	}
