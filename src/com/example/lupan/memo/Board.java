@@ -16,6 +16,10 @@ import android.graphics.Rect; // (left, top, right, bottom)
 
 public class Board extends View {
 
+	interface EndOfGameListener {
+		void onEndOfGame(Board b);
+	}
+
 	static final int[] icons = {
 		R.drawable.animals_bumble_bee,
 		R.drawable.animals_butterfly,
@@ -52,6 +56,13 @@ public class Board extends View {
 	public Board(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
+	}
+
+	EndOfGameListener listener;
+
+	public void setEndOfGameListener(EndOfGameListener listener)
+	{
+		this.listener = listener;
 	}
 
 	public int getMovesCnt() {
@@ -234,6 +245,11 @@ public class Board extends View {
 		field_status[xs[1]][ys[1]] = EMPTY_FIELD;
 		uncovered_cnt = 0;
 		active_fields -= 2;
+		if (active_fields == 0) {
+			if (listener != null) {
+				listener.onEndOfGame(this);
+			}
+		}
 	}
 
 	private void hide_uncovered_fields() {

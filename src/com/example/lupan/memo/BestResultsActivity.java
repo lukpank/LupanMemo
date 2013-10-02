@@ -1,15 +1,19 @@
 package com.example.lupan.memo;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Date;
-import android.view.Menu;
-import android.widget.TextView;
 
 public class BestResultsActivity extends Activity {
 
@@ -50,8 +54,11 @@ public class BestResultsActivity extends Activity {
 
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		setBestResults(sharedPref.getString(
-			String.format("best_results_%d", board_size), "100:0:Lupan\n150:100000:Hello:World"));
+			String.format("best_results_%d", board_size), ""));
 		fillTable();
+		if (your_pos >= 0 && your_pos < BEST_RESULTS_CNT) {
+			askPlayerName();
+		}
 	}
 
 	private void setBestResults(String results_string)
@@ -97,7 +104,6 @@ public class BestResultsActivity extends Activity {
 	 */
 	private void fillTable()
 	{
-
 		Resources res = getResources();
 		String pkg = getApplicationContext().getPackageName();
  
@@ -146,6 +152,55 @@ public class BestResultsActivity extends Activity {
 			}
 
 		}
+	}
+
+	private void askPlayerName() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.dialog_player_name, null);
+		final EditText text = (EditText) layout.findViewById(R.id.playerName);
+		text.setText(sharedPref.getString("player_name", ""));
+		builder.setView(layout);
+
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					saveBestResults(text.getText().toString().replace('\n', ' '));
+				}
+			});
+		builder.show();
+
+	}
+
+	private void saveBestResults(String player_name) {
+		Resources res = getResources();
+		String pkg = getApplicationContext().getPackageName();
+
+		results[your_pos].name = player_name;
+		int name = res.getIdentifier(String.format("name%d", your_pos + 1), "id", pkg);
+		if (name != 0) {
+			TextView text = (TextView) findViewById(name);
+			text.setText(player_name);
+		}
+		
+		SharedPreferences.Editor prefEditor = sharedPref.edit();
+		prefEditor.putString("player_name", player_name);
+		prefEditor.putString(String.format("best_results_%d", board_size),
+				     serializeResults());
+		prefEditor.commit();
+	}
+
+	private String serializeResults() {
+		StringBuffer buf = new StringBuffer();
+
+		for (int i = 0; i < BEST_RESULTS_CNT; i++) {
+			if (results[i] == null) {
+				break;
+			}
+			buf.append(String.format("%d:%d:%s\n", results[i].score, results[i].date,
+						 results[i].name));
+		}
+		return buf.toString();
 	}
 
 	// @Override

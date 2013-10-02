@@ -18,7 +18,8 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 
 
-public class MainActivity extends Activity implements OnSharedPreferenceChangeListener {
+public class MainActivity extends Activity
+	implements OnSharedPreferenceChangeListener, Board.EndOfGameListener {
 
 	Board board;
 	SharedPreferences sharedPref;
@@ -28,6 +29,7 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		board = (Board) findViewById(R.id.board);
+		board.setEndOfGameListener(this);
 
 		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		sharedPref.registerOnSharedPreferenceChangeListener(this);
@@ -93,8 +95,11 @@ public class MainActivity extends Activity implements OnSharedPreferenceChangeLi
 		}
 	}
 
-	public void bestResults(int score) {
+	public void onEndOfGame(Board b) {
+		bestResults(b.getMovesCnt());
+	}
 
+	public void bestResults(int score) {
 		Intent intent = new Intent(this,
 					   BestResultsActivity.class);
 		Bundle b = new Bundle();
