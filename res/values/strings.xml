@@ -14,6 +14,8 @@
     <string name="results_score">Score</string>
     <string name="results_date">Date</string>
     <string name="results_name">Name</string>
+    <string name="start_new_game">Start a new game</string>
+    <string name="back_to_game">Back to the game</string>
     <string name="ask_for_player_name">Your results is one of top ten results. Please enter your name:</string>
     <string name="message_about">
 <![CDATA[

@@ -10,12 +10,15 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.Date;
 
 public class BestResultsActivity extends Activity {
+
+	public static final int RESULT_NEW_GAME = Activity.RESULT_FIRST_USER;
 
 	class Result {
 		public int score;
@@ -152,6 +155,13 @@ public class BestResultsActivity extends Activity {
 			}
 
 		}
+
+		Button button = (Button) findViewById(R.id.button1);
+		if (your_score > 0) {
+			button.setText(R.string.start_new_game);
+		} else {
+			button.setText(R.string.back_to_game);
+		}
 	}
 
 	private void askPlayerName() {
@@ -201,6 +211,12 @@ public class BestResultsActivity extends Activity {
 						 results[i].name));
 		}
 		return buf.toString();
+	}
+
+	public void onButtonClick(View view) {
+		setResult((your_score > 0) ?
+			  RESULT_NEW_GAME : Activity.RESULT_OK);
+		finish();
 	}
 
 	// @Override

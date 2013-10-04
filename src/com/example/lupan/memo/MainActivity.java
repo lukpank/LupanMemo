@@ -21,6 +21,8 @@ import android.text.method.LinkMovementMethod;
 public class MainActivity extends Activity
 	implements OnSharedPreferenceChangeListener, Board.EndOfGameListener {
 
+	static final int BEST_RESULTS_REQUEST = 0;
+
 	Board board;
 	SharedPreferences sharedPref;
 
@@ -106,7 +108,7 @@ public class MainActivity extends Activity
 		b.putInt("board_size", board.getBoardSize());
 		b.putInt("score", score);
 		intent.putExtras(b);
-		startActivity(intent);
+		startActivityForResult(intent, BEST_RESULTS_REQUEST);
 	}
 
 	public void about() {
@@ -142,6 +144,15 @@ public class MainActivity extends Activity
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+					Intent data) {
+		if (requestCode == BEST_RESULTS_REQUEST &&
+		    resultCode == BestResultsActivity.RESULT_NEW_GAME) {
+			newGame();
 		}
 	}
 
