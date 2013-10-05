@@ -76,7 +76,8 @@ public class Board extends View {
 	int xcnt = 0; /** number of rows on the board */
 	int ycnt = 0; /** number of columns on the board */
 
-	Paint hidden_paint, visible_paint, text_paint;
+	Paint visible_paint, text_paint;
+	Bitmap pattern_bitmap;
 	Rect[][] rects;
 	int[][] field_icons;
 
@@ -95,13 +96,15 @@ public class Board extends View {
 	int[] ys = new int[2];
 
 	private void init() {
-		hidden_paint = new Paint();
-		hidden_paint.setColor(0x404040ff);
 		visible_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		visible_paint.setStyle(Paint.Style.STROKE);
 		text_paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		text_paint.setTextAlign(Paint.Align.CENTER);
 		text_paint.setTextSize(18);
+		Resources res = getContext().getResources();
+		pattern_bitmap = BitmapFactory.decodeResource(
+	              res, R.drawable.pattern);
+
 	}
 
 	private void setSize(int xcnt, int ycnt)
@@ -194,7 +197,9 @@ public class Board extends View {
 			return;
 		}
 		if (field_status[x][y] == HIDDEN_FIELD) {
-			canvas.drawRect(rects[x][y], hidden_paint);
+			canvas.drawBitmap(pattern_bitmap, null, rects[x][y],
+					  visible_paint);
+
 		}
 		canvas.drawRect(rects[x][y], visible_paint);
 		if (field_status[x][y] == UNCOVERED_FIELD) {
