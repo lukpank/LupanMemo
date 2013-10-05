@@ -453,7 +453,7 @@
         android:background="#FF909090" />
 
     <View
-        android:layout_height="20dip" />
+        android:layout_height="10dip" />
 
     <TableRow
         android:id="@+id/tableRow11"
@@ -492,6 +492,9 @@
           android:text="" />
            
     </TableRow>
+
+    <View
+        android:layout_height="10dip" />
 
     <Button
         android:id="@+id/button1"
