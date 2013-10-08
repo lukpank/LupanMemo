@@ -107,6 +107,13 @@ public class Board extends View {
 
 	}
 
+	/**
+	 * Set number of columns (xcnt) and number of rows (ycnt)
+	 * of the board
+	 *
+	 * @param xcnt number of columns
+	 * @param ycnt number of rows
+	 */
 	private void setSize(int xcnt, int ycnt)
 	{
 		if (xcnt < 1 || ycnt < 1 ||
@@ -128,10 +135,20 @@ public class Board extends View {
 		onSizeChanged(widget_w, widget_h, widget_w, widget_h);
 	}
 
+	/**
+	 * start an new Game, the argument must be of the form:
+	 * (ycnt * 100 + xcnt)
+	 */
 	public void newGame(int ycnt_xcnt) {
 		newGame(ycnt_xcnt % 100, ycnt_xcnt / 100);
 	}
 
+	/**
+	 * start an new Game for the board
+	 *
+	 * @param xcnt number of columns
+	 * @param ycnt number of rows
+	 */
 	public void newGame(int xcnt, int ycnt) {
 		setSize(xcnt, ycnt);
 		for (int i = 0; i < xcnt; i++) {
@@ -158,8 +175,8 @@ public class Board extends View {
 		}
 	}
 
-	int board_x;
-	int board_y;
+	int board_x; /** x orign of drawing the board */
+	int board_y; /** y orign of drawing the board */
 	int board_w; /** width of the board minus padding */
 	int board_h; /** height of the board minus padding */
 	int widget_w, widget_h; // w and h from last call of onSizeChanged
@@ -191,6 +208,9 @@ public class Board extends View {
 		}
 	}
 
+	/**
+	 * Draw rectangle, a single field of the board
+	 */
 	private void drawRect(Canvas canvas, int x, int y)
 	{
 		if (field_status[x][y] == EMPTY_FIELD) {
@@ -238,6 +258,9 @@ public class Board extends View {
 		}
 	}
 
+	/**
+	 * Uncover field of the given coordinates
+	 */
 	private void uncover(int x, int y) {
 		field_status[x][y] = UNCOVERED_FIELD;
 		xs[uncovered_cnt] = x;
@@ -245,6 +268,9 @@ public class Board extends View {
 		uncovered_cnt++;
 	}
 
+	/**
+	 * Remove oncovered fields (having identical icons)
+	 */
 	private void remove_uncovered_fields() {
 		field_status[xs[0]][ys[0]] = EMPTY_FIELD;
 		field_status[xs[1]][ys[1]] = EMPTY_FIELD;
@@ -257,6 +283,9 @@ public class Board extends View {
 		}
 	}
 
+	/**
+	 * Hide uncovered fields
+	 */
 	private void hide_uncovered_fields() {
 		field_status[xs[0]][ys[0]] = HIDDEN_FIELD;
 		field_status[xs[1]][ys[1]] = HIDDEN_FIELD;
