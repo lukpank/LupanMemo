@@ -400,15 +400,17 @@ public class Board extends View {
 			for (int y = 0; y < ycnt; y++) {
 				field_icons[x][y] = values[idx++];
 				field_status[x][y] = values[idx++];
-				if (field_icons[x][y] < 0 || field_icons[x][y] >= icons.length ||
-				    field_status[x][y] < 0 || field_status[x][y] > 2) {
+				if (field_icons[x][y] < 0 || field_icons[x][y] >= icons.length) {
 					newGame(xcnt, ycnt);
 					return false;
 				}
-				if (field_status[x][y] == EMPTY_FIELD) {
+				switch (field_status[x][y]) {
+				case HIDDEN_FIELD:
+					break;
+				case EMPTY_FIELD:
 					active_fields--;
-				}
-				if (field_status[x][y] == UNCOVERED_FIELD) {
+					break;
+				case UNCOVERED_FIELD:
 					if (uncovered_cnt == 2) {
 						newGame(xcnt, ycnt);
 						return false;
@@ -416,6 +418,10 @@ public class Board extends View {
 					xs[uncovered_cnt] = x;
 					ys[uncovered_cnt] = y;
 					uncovered_cnt++;
+					break;
+				default:
+					newGame(xcnt, ycnt);
+					return false;
 				}
 			}
 		}
