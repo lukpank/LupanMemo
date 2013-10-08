@@ -386,7 +386,7 @@ public class Board extends View {
 		int ycnt = values[2];
 
 		if (xcnt < 1 || ycnt < 1 || xcnt * ycnt / 2 > icons.length ||
-		    values.length < 2 + 2 * xcnt * ycnt) {
+		    values.length < 4 + 2 * xcnt * ycnt) {
 			// empty or not enough icons or not enough values
 			return false;
 		}
