@@ -345,16 +345,13 @@ public class Board extends View {
 	{
 		StringBuffer buf = new StringBuffer();
 
-		buf.append("0:"); // format's version number
-		buf.append(String.format("%d:", xcnt));
-		buf.append(String.format("%d:", ycnt));
-		buf.append(String.format("%d:", moves_cnt));
+		// first one is the format's version number
+		buf.append(String.format("0:%d:%d:%d", xcnt, ycnt, moves_cnt));
 
 		for (int x = 0; x < xcnt; x++) {
 			for (int y = 0; y < ycnt; y++) {
-				buf.append(String.format("%d:",
-							 field_icons[x][y]));
-				buf.append(String.format("%d:",
+				buf.append(String.format(":%d:%d",
+							 field_icons[x][y],
 							 field_status[x][y]));
 			}
 		}
