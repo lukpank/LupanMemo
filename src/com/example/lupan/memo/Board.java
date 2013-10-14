@@ -69,6 +69,10 @@ public class Board extends View {
 		return moves_cnt;
 	}
 
+	public int getActiveFields() {
+		return active_fields;
+	}
+
 	public int getBoardSize() {
 		return ycnt * 100 + xcnt;
 	}

@@ -38,7 +38,8 @@ public class MainActivity extends Activity
 
 		if (! sharedPref.contains("board_state") ||
 		    ! board.deserialize(
-				sharedPref.getString("board_state", ""))) {
+				sharedPref.getString("board_state", "")) ||
+		    board.getActiveFields() == 0) {
 			newGame();
 		}
 	}
