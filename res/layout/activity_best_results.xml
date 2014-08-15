@@ -1,507 +1,502 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/TableLayout1"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:shrinkColumns="3"
-    android:stretchColumns="0,3"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".BestResultsActivity"
     tools:ignore="HardcodedText" >
 
-    <TableRow
-        android:id="@+id/tableRow0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+  <ScrollView
+      android:id="@+id/scrollView1"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_above="@+id/button1" >
 
-      <TextView
-          android:id="@+id/ordinal0"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="" />
-
-      <TextView
-          android:id="@+id/score0"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="@string/results_score"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/date0"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="@string/results_date"
-          android:gravity="center"
-          android:textStyle="bold" />
-
-      <TextView
-          android:id="@+id/name0"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="@string/results_name"
-          android:textStyle="bold" />
-           
-    </TableRow>
-
-  <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
- 
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="1." />
-
-      <TextView
-          android:id="@+id/score1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="2." />
-
-      <TextView
-          android:id="@+id/score2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/orinal3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="3." />
-
-      <TextView
-          android:id="@+id/score3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name3"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="4." />
-
-      <TextView
-          android:id="@+id/score4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name4"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <TableRow
-        android:id="@+id/tableRow5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="5." />
-
-      <TextView
-          android:id="@+id/score5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal6"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="6." />
-
-      <TextView
-          android:id="@+id/score6"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date6"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name6"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal7"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="7." />
-
-      <TextView
-          android:id="@+id/score7"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date7"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name7"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <TableRow
-        android:id="@+id/tableRow8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal8"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="8." />
-
-      <TextView
-          android:id="@+id/score8"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date8"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name8"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-
-    <TableRow
-        android:id="@+id/tableRow9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal9"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="9." />
-
-      <TextView
-          android:id="@+id/score9"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date9"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name9"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal10"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="10." />
-
-      <TextView
-          android:id="@+id/score10"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/date10"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="---" />
-
-      <TextView
-          android:id="@+id/name10"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="---" />
-           
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <View
-        android:layout_height="10dip" />
-
-    <TableRow
-        android:id="@+id/tableRow11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        
-      <TextView
-          android:id="@+id/ordinal11"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="" />
-
-      <TextView
-          android:id="@+id/score11"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="right"
-          android:text="" />
-
-      <TextView
-          android:id="@+id/date11"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:gravity="center"
-          android:text="" />
-
-      <TextView
-          android:id="@+id/name11"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="3dip"
-          android:text="" />
-           
-    </TableRow>
-
-    <View
-        android:layout_height="10dip" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/TableLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="onButtonClick" />
+        android:gravity="center"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:shrinkColumns="3"
+        android:stretchColumns="0,3" >
 
-</TableLayout>
+      <TableRow
+          android:id="@+id/tableRow0"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/score0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="@string/results_score"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="@string/results_date"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="@string/results_name"
+            android:textStyle="bold" />
+      </TableRow>
+
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+
+      <TableRow
+          android:id="@+id/tableRow1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="1." />
+
+        <TextView
+            android:id="@+id/score1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+
+      <TableRow
+          android:id="@+id/tableRow2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="2." />
+
+        <TextView
+            android:id="@+id/score2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/orinal3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="3." />
+
+        <TextView
+            android:id="@+id/score3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow4"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="4." />
+
+        <TextView
+            android:id="@+id/score4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+
+      <TableRow
+          android:id="@+id/tableRow5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="5." />
+
+        <TextView
+            android:id="@+id/score5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow6"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="6." />
+
+        <TextView
+            android:id="@+id/score6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="7." />
+
+        <TextView
+            android:id="@+id/score7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+
+      <TableRow
+          android:id="@+id/tableRow8"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="8." />
+
+        <TextView
+            android:id="@+id/score8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow9"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="9." />
+
+        <TextView
+            android:id="@+id/score9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <TableRow
+          android:id="@+id/tableRow10"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="10." />
+
+        <TextView
+            android:id="@+id/score10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/date10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="---" />
+
+        <TextView
+            android:id="@+id/name10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip"
+            android:text="---" />
+      </TableRow>
+
+      <View
+          android:layout_height="2dip"
+          android:background="#FF909090" />
+
+      <View android:layout_height="10dip" />
+
+      <TableRow
+          android:id="@+id/tableRow11"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/ordinal11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/score11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/date11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dip" />
+
+        <TextView
+            android:id="@+id/name11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dip" />
+      </TableRow>
+
+      <View android:layout_height="10dip" />
+    </TableLayout>
+  </ScrollView>
+
+  <Button
+      android:id="@+id/button1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:onClick="onButtonClick"
+      android:text="Button" />
+
+</RelativeLayout>
