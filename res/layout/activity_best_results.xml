@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:shrinkColumns="3"
     android:stretchColumns="0,3"
-    tools:context=".BestResultsActivity" >
+    tools:context=".BestResultsActivity"
+    tools:ignore="HardcodedText" >
 
     <TableRow
         android:id="@+id/tableRow0"
