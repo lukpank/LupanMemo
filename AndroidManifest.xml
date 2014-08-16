@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lupan.memo"
+    package="io.github.lukpank.lupanmemo"
     android:versionCode="1"
     android:versionName="0.2.2" >
 
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.lupan.memo.MainActivity"
+            android:name="io.github.lukpank.lupanmemo.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +23,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.lupan.memo.SettingsActivity"
+            android:name="io.github.lukpank.lupanmemo.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.example.lupan.memo.BestResultsActivity"
+            android:name="io.github.lukpank.lupanmemo.BestResultsActivity"
             android:label="@string/title_activity_best_results" >
         </activity>
     </application>

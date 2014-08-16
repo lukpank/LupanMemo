@@ -1,4 +1,4 @@
-package com.example.lupan.memo;
+package io.github.lukpank.lupanmemo;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -17,7 +17,11 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 
+import io.github.lukpank.lupanmemo.R;
+
 import java.util.List;
+
+
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

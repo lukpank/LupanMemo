@@ -1,6 +1,6 @@
-package com.example.lupan.memo;
+package io.github.lukpank.lupanmemo;
 
-import com.example.lupan.memo.R;
+import io.github.lukpank.lupanmemo.R;
 
 import android.view.View;
 import android.view.MotionEvent;

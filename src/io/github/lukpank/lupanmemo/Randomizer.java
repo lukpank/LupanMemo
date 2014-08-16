@@ -1,4 +1,4 @@
-package com.example.lupan.memo;
+package io.github.lukpank.lupanmemo;
 
 import java.util.Random;
 

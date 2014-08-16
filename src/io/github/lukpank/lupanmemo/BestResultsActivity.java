@@ -1,4 +1,4 @@
-package com.example.lupan.memo;
+package io.github.lukpank.lupanmemo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import io.github.lukpank.lupanmemo.R;
+
 import java.text.DateFormat;
 import java.util.Date;
+
+
 
 public class BestResultsActivity extends Activity {
 

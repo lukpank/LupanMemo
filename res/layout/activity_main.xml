@@ -5,7 +5,7 @@
     android:paddingRight="16dp"
     android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.example.lupan.memo.Board
+    <io.github.lukpank.lupanmemo.Board
         android:id="@+id/board"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
