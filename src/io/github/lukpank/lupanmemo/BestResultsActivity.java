@@ -47,7 +47,7 @@ public class BestResultsActivity extends Activity {
 	int board_size;
 	int your_score;
 	int your_pos = -1;
-	int ask = 1;
+	boolean ask = true;
 	SharedPreferences sharedPref;
 	Result[] results = new Result[BEST_RESULTS_CNT + 1];
 	
@@ -61,8 +61,8 @@ public class BestResultsActivity extends Activity {
 		your_score = b.getInt("score");
 
 		if (savedInstanceState != null) {
-			ask = savedInstanceState.getInt("ask");
-			if (ask == 0) {
+			ask = savedInstanceState.getBoolean("ask");
+			if (! ask) {
 				your_pos = savedInstanceState.getInt("your_pos");
 			}
 		}
@@ -71,15 +71,15 @@ public class BestResultsActivity extends Activity {
 		setBestResults(sharedPref.getString(
 			String.format("best_results_%d", board_size), ""));
 		fillTable();
-		if (your_pos >= 0 && your_pos < BEST_RESULTS_CNT && ask == 1) {
+		if (your_pos >= 0 && your_pos < BEST_RESULTS_CNT && ask) {
 			askPlayerName();
 		}
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putInt("ask", ask);
-		if (ask == 0) {
+		outState.putBoolean("ask", ask);
+		if (! ask) {
 			outState.putInt("your_pos", your_pos);
 		}
 	}
@@ -217,7 +217,7 @@ public class BestResultsActivity extends Activity {
 		prefEditor.putString(String.format("best_results_%d", board_size),
 				     serializeResults());
 		prefEditor.commit();
-		ask = 0;
+		ask = false;
 	}
 
 	private String serializeResults() {
