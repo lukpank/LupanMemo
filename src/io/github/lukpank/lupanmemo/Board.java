@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 package io.github.lukpank.lupanmemo;
 
 import io.github.lukpank.lupanmemo.R;
