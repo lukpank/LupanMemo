@@ -32,16 +32,17 @@ Autor: <b>Łukasz Pankowski</b>
 </p>
 
 <p>
-Wszelkie prawa zastrzeżone. Żadnej gwarancji.
-</p>
-
-<p>
 Celem gry jest odsłonięcie wszystkich obrazków w jak najmniejszej
 liczbie ruchów. Obrazki odsłania się parami (przez kliknięcie
 wybranych obrazków) i jeśli są one identyczne to zostają usunięte z
 planszy, jeśli zaś są różne to są ponownie zakrywane.
 </p>
 
+<p>
+Lupan Memo jest Wolnym Oprogramowaniem (ang. Free Software). Nie ma
+żadnej gwarancji. Kod źródłowy można pobrać z
+<a href="https://github.com/lukpank/LupanMemo">https://github.com/lukpank/LupanMemo</a>.
+</p>
 
 <p>
 Wszystkie obrazki na planszy oraz ikona programu są w Domenie
