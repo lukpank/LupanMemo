@@ -7,7 +7,7 @@ number of moves. Images are uncovered pairwise (by clicking selected
 images) and if they are identical then they are removed from the board
 and if they are different then they are covered again.
 
-## Software licence
+## Software license
 
 MIT/X Consortium License
 
